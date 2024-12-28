@@ -1,5 +1,8 @@
 package main
 
+import "fmt"
+
+// MinHeap
 type MinHeap struct {
 	arr []int
 }
@@ -37,6 +40,7 @@ func (h *MinHeap) heapifyDown(index int) {
 
 	if left < size && h.arr[left] < h.arr[smallest] {
 		smallest = left
+		
 	}
 
 	if right < size && h.arr[right] < h.arr[smallest] {
@@ -49,6 +53,19 @@ func (h *MinHeap) heapifyDown(index int) {
 	}
 }
 
+func (h *MinHeap) Display() {
+	fmt.Println(h.arr)
+}
+
 func main() {
+	h := &MinHeap{}
+	h.Insert(10)
+	h.Insert(20)
+	h.Insert(5)
+	h.Insert(30)
+	h.Insert(15)
+	h.Display()
+	h.Remove()
+	h.Display()
 
 }

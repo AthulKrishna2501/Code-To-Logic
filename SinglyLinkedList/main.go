@@ -138,18 +138,27 @@ func (list *LinkedList) deleteBeforeElement(pos int) {
 	prev.next = current.next
 }
 
+func (list *LinkedList) printReverse(current *Node) {
+	if current == nil {
+		return
+	}
+	list.printReverse(current.next)
+	fmt.Println(current.value)
+}
 func main() {
 	list := &LinkedList{}
-	list.insertAtFirst(1)
-	list.insertAtFirst(2)
-	list.insertAtFirst(3)
-	list.insertAtEnd(10)
-	list.insertAfterElement(30, 2)
-	list.insertBeforeElement(9, 10)
-	list.insertAtNth(8, 10)
-	list.deleteFirst()
-	list.deleteEnd()
-	list.deleteAfterElement(1)
-	list.deleteBeforeElement(1)
-	list.displayLinkedList()
+	list.head = &Node{value: 10, next: &Node{value: 20, next: &Node{value: 30}}}
+	// list.insertAtFirst(1)
+	// list.insertAtFirst(2)
+	// list.insertAtFirst(3)
+	// list.insertAtEnd(10)
+	// list.insertAfterElement(30, 2)
+	// list.insertBeforeElement(9, 10)
+	// list.insertAtNth(8, 10)
+	// list.deleteFirst()
+	// list.deleteEnd()
+	// list.deleteAfterElement(1)
+	// list.deleteBeforeElement(1)
+	list.printReverse(list.head)
+	// list.displayLinkedList()
 }

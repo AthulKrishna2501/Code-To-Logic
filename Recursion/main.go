@@ -37,6 +37,18 @@ func reverseString(n string) string {
 	return reverseString(n[1:]) + string(n[0])
 }
 
+func removeCharFromString(char rune, str string) string {
+	firstChar := rune(str[0])
+	rest := str[1:]
+
+	if firstChar == char {
+		return removeCharFromString(char, rest)
+	}
+
+	return string(firstChar) + removeCharFromString(char, rest)
+
+}
+
 func main() {
 	result := factorial(5)
 	fmt.Println("Factorial of 5 is :", result)
@@ -44,6 +56,7 @@ func main() {
 	fmt.Println("Fibonacci of 5 is :", fibonacci)
 	sum := sumofDigits(198)
 	fmt.Println("Sum of digits is :", sum)
-	reverse := reverseString("hello")
+	reverse := removeCharFromString('l', "hooll")
 	fmt.Println(reverse)
+
 }
