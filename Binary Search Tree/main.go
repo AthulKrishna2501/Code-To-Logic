@@ -219,14 +219,15 @@ func main() {
 	root.Preorder()
 	root.PostOrder()
 	root.LevelOrder()
-	target := 13
-	fmt.Println(root.FindClosestValue(target))
-	if isBST(&Node{}) {
-		fmt.Println("isBSt")
-	} else {
-		fmt.Println("NotBST")
-	}
+	fmt.Println(root.Search(35))
+	// target := 13
+	// fmt.Println(root.FindClosestValue(target))
+	// if isBST(&Node{}) {
+	// 	fmt.Println("isBSt")
+	// } else {
+	// 	fmt.Println("NotBST")
+	// }
 
-	root.Delete(root.root, 20)
+	// root.Delete(root.root, 20)
 
 }

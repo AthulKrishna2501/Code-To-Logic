@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // MinHeap
 type MinHeap struct {
@@ -27,6 +29,7 @@ func (h *MinHeap) heapifyUp(index int) {
 
 func (h *MinHeap) Remove() int {
 	root := h.arr[0]
+	h.arr[0] = h.arr[len(h.arr)-1]
 	h.arr = h.arr[:len(h.arr)-1]
 	h.heapifyDown(0)
 	return root
@@ -40,7 +43,7 @@ func (h *MinHeap) heapifyDown(index int) {
 
 	if left < size && h.arr[left] < h.arr[smallest] {
 		smallest = left
-		
+
 	}
 
 	if right < size && h.arr[right] < h.arr[smallest] {
@@ -52,6 +55,32 @@ func (h *MinHeap) heapifyDown(index int) {
 		h.heapifyDown(smallest)
 	}
 }
+
+func (h *MinHeap) BuildHeapFromArray(arr []int) {
+	for i := len(arr)/2 - 1; i > 0; i-- {
+		h.heapify(arr, i)
+	}
+}
+
+func (h *MinHeap) heapify(arr []int, index int) {
+	left := 2*index + 1
+	right := 2*index + 2
+	smallest := index
+	if left < len(arr) && arr[left] < arr[smallest] {
+		smallest = left
+	}
+
+	if right < len(arr) && arr[right] < arr[smallest] {
+		smallest = right
+	}
+
+	for smallest != index {
+		arr[smallest], arr[index] = arr[index], arr[smallest]
+		h.heapify(arr, index)
+	}
+}
+
+
 
 func (h *MinHeap) Display() {
 	fmt.Println(h.arr)
@@ -67,5 +96,7 @@ func main() {
 	h.Display()
 	h.Remove()
 	h.Display()
-
+	arr := []int{10, 20, 15, 30, 40}
+	h.BuildHeapFromArray(arr)
+	fmt.Println(arr)
 }

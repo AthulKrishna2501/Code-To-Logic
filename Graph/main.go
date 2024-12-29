@@ -79,6 +79,7 @@ func main() {
 	graph.AddEdge(1, 5)
 	graph.AddEdge(2, 4)
 	graph.AddEdge(3, 1)
+	graph.Print()
 
 
 	fmt.Print("BFS: ")
