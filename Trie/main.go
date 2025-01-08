@@ -14,10 +14,10 @@ type Trie struct {
 func (t *Trie) Insert(word string) {
 	node := t.root
 	for _, str := range word {
-		if _, exists := t.childern[str]; !exists {
-			node.childern[char] = &TrieNode{childern: make(map[rune]*TrieNode)}
+		if _, exists := node.childern[str]; !exists {
+			node.childern[str] = &TrieNode{childern: make(map[rune]*TrieNode)}
 		}
-		node = node.childern[char]
+		node = node.childern[str]
 	}
 	node.isEnd = true
 }
@@ -33,7 +33,7 @@ func (t *Trie) Search(word string) bool {
 	return node.isEnd
 }
 
-func (t *Trie) StartsWith(word string)bool {
+func (t *Trie) StartsWith(word string) bool {
 	node := t.root
 	for _, str := range word {
 		if _, exists := node.childern[str]; !exists {

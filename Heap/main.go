@@ -98,5 +98,4 @@ func main() {
 	h.Display()
 	arr := []int{10, 20, 15, 30, 40}
 	h.BuildHeapFromArray(arr)
-	fmt.Println(arr)
 }
